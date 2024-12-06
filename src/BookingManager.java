@@ -9,14 +9,12 @@ public class BookingManager {
 		this.seats = seats;
 	}
 
-	public void processBookingRequests(List<String> bookingRequests) {
+	public void bookRequests(List<String> bookingRequests) {
 
-		//bookingRequests.forEach(this::attemptToBookSeat);
-		bookingRequests.forEach(x-> findSeatByName(x).ifPresentOrElse(
+		bookingRequests.forEach(x -> findSeatByName(x).ifPresentOrElse(
 				this::bookSeat,
 				() -> System.out.println("Seat " + x + " does not exist.")
 		));
-
 	}
 
 	public long countBookedSeats() {
@@ -37,14 +35,5 @@ public class BookingManager {
 			System.out.println(e.getMessage());
 		}
 	}
-
-
-//	private void attemptToBookSeat(String request) {
-//		findSeatByName(request)
-//				.ifPresentOrElse(
-//						this::bookSeat,
-//						() -> System.out.println("Seat " + request + " does not exist.")
-//				);
-//	}
 
 }
